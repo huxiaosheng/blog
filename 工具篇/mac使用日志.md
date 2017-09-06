@@ -27,6 +27,7 @@
 | 应用最小化    | ⌘ + M              |
 | dock隐藏   | Option + ⌘ + D     |
 | Finder显示 | Option + ⌘ + Space |
+| 复制当前路径   | Option + ⌘ + C     |
 
 
 ### 输入法
