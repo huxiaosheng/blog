@@ -178,3 +178,82 @@ class Point(){
 
 
 
+
+
+
+
+## Promise对象
+
+
+
+
+
+## Generator函数
+
+### 基本概念
+
+Generator函数是es6提供的一种异步编程解决方案。
+
+直接上例子：
+
+```javascript
+function* helloWorldGenerator(){
+    yield 'hello';
+  	yield 'world';
+  return 'ending';
+}
+
+var hw = helloWorldGenerator();
+```
+
+形式上，Generator函数是一个普通函数，但是有**两个特征**。
+
+1. `function`关键字与函数名之间有一个星号
+2. 函数体内部使用`yield`（产出）表达式，定义不同的内部状态
+
+
+
+
+
+
+
+## async函数
+
+一句话，就是Generator函数的语法糖
+
+
+
+下面是一个Generator函数，依次读取两个文件。
+
+```javascript
+const fs = require('fs');
+
+const readFile = function (fileName) {
+  return new Promise(function (resolve, reject) {
+    fs.readFile(fileName, function(error, data) {
+      if (error) return reject(error);
+      resolve(data);
+    });
+  });
+};
+
+const gen = function* () {
+  const f1 = yield readFile('/etc/fstab');
+  const f2 = yield readFile('/etc/shells');
+  console.log(f1.toString());
+  console.log(f2.toString());
+};
+```
+
+写成`async`函数，就是这样
+
+```Javascript
+const asyncReadFile = async function(){
+	const f1 = await readFile('/etc/fstab');
+  	const f2 = await readFile('/etc/shells');
+  	console.log(f1.toString());
+  	console.log(f2.toStrong());
+}
+```
+
+**特征：**Generator函数的星号(*)替换成`async`,将`yield`替换成`await`。
