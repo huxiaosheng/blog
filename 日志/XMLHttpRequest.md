@@ -1,0 +1,3 @@
+# XMLHttpRequest
+
+`XMLHttpRequest`是一个API，为客户端提供了客户端和服务器之间传输数据的功能。它提供了一个通过URL来获取数据的简单方式，并且不会使真个页面刷新。
