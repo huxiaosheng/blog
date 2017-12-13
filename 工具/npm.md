@@ -17,6 +17,14 @@
 
 
 
+### 依赖关系
+
+> -save：模块名将被添加到dependencies(生产环境需要的工具),可以简化为参数 -S。
+>
+> -save-dev：模块名将被添加到devDependencies（开发环境需要的工具），简写-D。
+
+
+
 
 
 ## nrm 切换 NPM 镜像
@@ -44,11 +52,4 @@ latest：安装最新版本。
 ```
 
 
-
-
-### 依赖关系
-
-> -save：模块名将被添加到dependencies,可以简化为参数 -S。
->
-> -save-dev：模块名将被添加到devDependencies，简写-D。
 

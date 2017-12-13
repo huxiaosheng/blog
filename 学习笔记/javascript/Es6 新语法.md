@@ -4,6 +4,8 @@
 
 
 
+
+
 ### 箭头函数
 
 es6允许使用  `( => )` 定义函数
@@ -178,6 +180,10 @@ class Point(){
 
 
 
+## Iterator和for...of
+
+
+
 
 
 
@@ -257,3 +263,12 @@ const asyncReadFile = async function(){
 ```
 
 **特征：**Generator函数的星号(*)替换成`async`,将`yield`替换成`await`。
+
+
+
+
+
+
+
+
+
