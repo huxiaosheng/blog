@@ -115,3 +115,29 @@ app.use(three);
 
 `ctx.throw()`方法，用来抛出错误,`ctx.throw(500)`就是抛出500错误
 
+
+
+
+
+## 常用中间件
+
+### koa-bodyparser
+
+koa的`body`分析器,基于`co-body`
+
+#### 基本用法
+
+```Javascript
+var Koa = require('koa');
+var bodyParser = require('koa-bodyparser');
+
+var app = new Koa();
+app.use(bodyParser());
+
+app.use(async ctx=>{
+  //解析的机构将被存在`ctx.request.body`
+  ctx.body = ctx.request.body;
+  
+})
+```
+

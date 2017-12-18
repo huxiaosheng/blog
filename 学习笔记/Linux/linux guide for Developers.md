@@ -1,83 +1,20 @@
-# linux guide for Developers
-
-## 文件基本操作
-
-### 复制文件
-
-```
-cp test1 test2
-```
-
-
-
-### 复制文件夹
-
-```
-cp -r test1 test2
-```
-
-
-
-### 移动
-
-```
-mv test1 test2/
-```
+# linux 常用命令
 
 
 
 
 
-### 重命名
-
-````
-mv test1 test2     //如果test2存在则为移动目标
-````
+[TOC]
 
 
 
-### 创建文件
+## 文件操作
 
-````
-touch aa	
-touch .aa   //加点创建隐藏文件
-````
-
-
-
-### 创建文件夹
-
-```
-mkdir test
-```
-
-
-
-### 删除文件
-
-```
-rm test
-```
-
-
-
-### 删除文件夹
-
-```
-rm -r test
-```
-
-
-
-
-
-### 浏览文件
-
-```
-less test	//内容q可以退出
-```
-
-
+| 命令                    | 功能                   |
+| --------------------- | -------------------- |
+| **cp** test1 test2    | 复制文件内容到test2 并覆盖原来内容 |
+| **cp -r** test1 test2 | 复制test1到test2        |
+|                       |                      |
 
 
 
@@ -133,59 +70,18 @@ wget http://baidu.com
 
 
 
-### sudo
-
-用来以其他身份来执行命令，预设的身份为root。在`/etc/sudoers`中设置可执行sudo 指令的用户。
-
 
 
 ## 常用的解压和压缩
 
-###  unzip 
-
-```
-unzip  happygrep-master.zip  //解压zip格式的文件夹
-```
-
-
-
-### zip
-
-```
-zip -r happygrep-master.zip happygrep-master/   //压缩文件
-```
-
-
-
-### tar zxvf
-
-```
-tar zxvf wget-1.11.1.tar.gz    //解压tar.gz格式文件
-```
-
-
-
-### tar zcvf
-
-```
-tar zcvf wget-1.11.1.tar.gz  wget-1.11.1/     //压缩文件
-```
-
-
-
-### tar jxvf
-
-```
-tar jxvf weget-1.11.2.tar.bz2	//解压tar.bz2格式文件
-```
-
-
-
-### tar jcvf
-
-```
-tar jcvf weget-1.11.2.tar.bz2 weget-1.11.2/		//压缩文件
-```
+| 命令                                       | 功能            |
+| ---------------------------------------- | ------------- |
+| **unzip**  happygrep-master.zip          | 解压zip格式的文件夹   |
+| **zip -r**    happygrep-master.zip     happygrep-master/ | 压缩zip文件       |
+| **tar zxvf**    wget-1.11.1.tar.gz       | 解压tar.gz格式文件  |
+| **tar zcvf**    wget-1.11.1.tar.gz    wget-1.11.1/ | 压缩文件          |
+| **tar jxvf**    weget-1.11.2.tar.bz2     | 解压tar.bz2格式文件 |
+| **tar jcvf**     weget-1.11.2.tar.bz2.   weget-1.11.2/ | 压缩文件          |
 
 
 
