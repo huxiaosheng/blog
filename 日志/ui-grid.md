@@ -52,6 +52,7 @@ $scope.gridOptions={
   			cellClass:function(grid,row,col,rowRenderIndex,colRenderIndex){
   				//dosomething
 			}，
+      
               headerCellClass:function(){
                 //同上
               }
@@ -60,7 +61,7 @@ $scope.gridOptions={
     
     
     onRegisterApi:function(gridApi){
-      $scope.gridApi = gridApi;
+       $scope.gridApi = gridApi;
       
       
       //添加一个自定义列

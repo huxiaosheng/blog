@@ -141,13 +141,37 @@ getDefaultProps()：方法为props设置默认值
 
 
 
-## state和props重要区别
+## state VS props
+
+### state 
+
+主要作用于组件保存、控制、修改自己的可变状态。在组件内部初始化，可以被组件自生修改，而外部不能访问也不能访问也不能修改。你可以认为 `state` 是一个局部的、只能被组件自身控制的数据源。`state` 中状态可以通过 `this.setState`方法进行更新，`setState` 会导致组件的重新渲染。
+
+### props
+
+`props` 的主要作用是让使用该组件的父组件可以传入参数来配置该组件。它是外部传进来的配置参数，组件内部无法控制也无法修改。除非外部组件主动传入新的 `props`，否则组件的 `props` 永远保持不变。
+
+
+
+### 总结：
+
+`state` 和 `props` 有着千丝万缕的关系。它们都可以决定组件的行为和显示形态。一个组件的 `state` 中的数据可以通过 `props` 传给子组件，一个组件可以使用外部传入的 `props` 来初始化自己的 `state`。但是它们的职责其实非常明晰分明：*state 是让组件控制自己的状态，props 是让外部对组件自己进行配置*。
+
+没有 `state` 的组件叫无状态组件（stateless component），设置了 state 的叫做有状态组件（stateful component）。因为状态会带来管理的复杂性，我们尽量多地写无状态组件，尽量少地写有状态的组件。这样会降低代码维护的难度，也会在一定程度上增强组件的可复用性。前端应用状态管理是一个复杂的问题，我们后续会继续讨论。
+
+
+
+
 
 **props**：是一种从父级向子级传递数据的方法。
 
 **state**：只在交互的时候使用，即随时间变化的数据。
 
 所以在构建一个用于呈现数据模型的静态版本的应用程序，你只需要创建能够服用其他组件的组件，并通过props来传递数据。
+
+
+
+
 
 
 
@@ -219,6 +243,12 @@ class CustomTextInput extends React.Component{
 
 
 
+## 高阶组件
+
+就是一个函数，传给它一个组件，它返回一个新的组件
+
+**作用**：为了组件之间的代码复用，组件可能有着某些相同的逻辑，把这些逻辑抽离出来，放到高阶组件中进行复用。高阶组件内部的包装组件和被包装组件之间通过props传递数据
+
 ## react的虚拟DOM
 
 React在渲染出的UI内部建立和维护了一个内层的实现方式，它包括了从组件返回的React元素。这种实现方式使得React避免了一些不必要的创建和关联DOM节点，因为这样做可能比直接操作JavaScript对象更慢一些。有时它被称之为“虚拟DOM”，但是它其实和React Native的工作方式是一样的
@@ -271,4 +301,197 @@ React在渲染出的UI内部建立和维护了一个内层的实现方式，它�
    ​
 
 
+## JSX是什么？
+
+**所谓的JSX其实就是javascript对象** ，让javascript语言能够支持这种直接在Javascript代码里编写类似HTML标签结构的语法。编译的过程会把类似HTML的JSX结构转换成javascript的对象结构。
+
+
+
+总结：
+
+1. jsx 是 javascript 语言的一种语法扩展，长得像HTML，但并不是HTML
+2. React.js 可以用 JSX 来描述你的组件长什么样的。
+3. jsx 在编译的时候会变成相应的 javascript 对象描述
+4. `react-dom` 负责把这个用来描述 UI 信息的 Javascript 对象变成DOM元素，并且渲染到页面上
+
+
+
+
+
+## react 的事件监听
+
+例子：
+
+```Jsx
+render(){
+  return (
+  	<h1 onClick="this.handleClickOnTitle">React 小书</h1>
+  )
+}
+```
+
+
+
+
+
+1. 在React.js不需要手动调用浏览器原生的`addEventListener`进行事件监听。React .js 帮我们封装好了一些列的`on*`属性，当你需要为某个元素监听某个事件的时候，只需要简单的给它加上`on*`就可以了.
+2. 没有经过特殊处理的话，**`on*`事件监听只能用在普通的HTLML的标签上，而不能用在组件标签上。**
+3. 和普通浏览器一样，事件监听函数会被自动传入一个 `event` 对象，这个对象和普通的浏览器 `event` 对象所包含的方法和属性都基本一致。不同的是 React.js 中的 `event` 对象并不是浏览器提供的，而是它自己内部所构建的。
+
+
+
+## 状态提升的弊端
+
+​	**状态提升**：当某个状态被多个组件*依赖*或者*影响*的时候，就把该状态提升到这些组件的最近公共父组件中去管理，用 `props` 传递*数据或者函数*来管理这种*依赖*或着*影响*的行为。
+
+​	但是如果这个状态，需要被更高的组件用。你就得继续提升。你会发现这种无限制的提升不是一个好的解决方案。一旦发生了提升，你就需要修改原来保存这个状态的组件的代码，也要把整个数据传递路径经过的组件都修改一遍。所以我们需要一个方案，**Redux** 就是状态管理工具来帮助我们来管理这种共享状态。
+
+
+
+
+
+
+
+## React.js 的 context 
+
+react组件树中的状态想要传递，需要一级一级通过`props`传递。这样很麻烦，但是还有一种共享状态的API，`context`相当于js的window，其实就是组件树上某颗子树的全局变量
+
+用法:
+
+
+
+```Javascript
+
+class Index extends Component{
+  //功能和	propTypes验证组件props参数作用类似，不过它验证的是getChildContext返回的对象
+  static childContextTypes = {
+    themeColor:PropTypes.string
+  }
+
+  constructor(){
+    super()
+    this.state = {themeColor:'red'}
+  }
+
+
+//设置context的过程，它返回对象就是context
+  getChildContext(){
+    return {themeColor:this.state.themeColor}
+  }
+
+
+  render(){
+    return...
+  }
+}
+
+class Title extends Component{
+  //获取context共享的值
+  static contextTypes = {
+    themeColor:PropTypes.string
+  }
+
+
+
+  render(){
+    return (this.context.themeColor)
+  }
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 组件的生命周期
+
+**挂载**：我们把React.js将组件渲染，并且构造DOM元素然后塞入页面的过程称为组件的挂载。
+
+### 挂载阶段
+
+- componentWillMount : 组件挂载开始之前，也就是在组件调用`render`方法之前调用
+- componentDidMount : 组件挂载完成之后，也就是DOM元素已经插入页面后调用
+- componentWillUnmount : 组件对应的DOM元素从页面中删除之前调用
+
+
+
+```
+--> constructor()
+--> componentWillMount()   //组件挂载之前
+--> render()
+//然后构造DOM元素插入页面（挂载）
+--> componentDidMount()    //组件挂载完成之后
+//...
+--> componentWillUnmount()
+// 从页面中删除
+```
+
+
+
+
+
+### 更新阶段
+
+- shouldComponentUpdate(nextProps,nextState) : 你可以通过这个方法控制组件是否重新渲染。如果返回`false`组件就不会重新渲染。这个生命周期在React.js性能优化上非常有用。
+
+- componentWillReceiveProps(nextProps) ：组件从父组件接受到新的`props`之前调用
+
+- componentWillUpdate() : 组件开始重新渲染之前调用
+
+- componentDidUpdate() : 组件重新渲染并且把更改变更到真实的DOM以后调用
+
+  ​
+
+
+
+
+
+##  PropTypes
+
+提供一系列的数据类型可以用来配置组件的参数
+
+```
+PropTypes.array
+PropTypes.bool
+PropTypes.func
+PropTypes.number
+PropTypes.object
+PropTypes.string
+PropTypes.node
+PropTypes.element
+
+```
+
+
+
+
+
+## 开发规范
+
+- 组件的私有方法都用`_`开头，所有事件监听的方法都用`handle`开头。
+- 把事件监听方法传给组件的时候，属性名用`on`开头。
+
+
+
+
+
+内容编写循序如下 :
+
+```
+1. static 开头的类型属性，如 defaultProps、propTypes
+2. 构造函数，constructor
+3. getter/setter 
+4. 组件生命周期
+5. _开头的私有方法
+6. 事件监听方法，hanle*.
+7. render* 开头的方法，有时候render() 方法里面的内容会分开到不同函数里面进行，这些函数都以 render* 开头
+```
 
