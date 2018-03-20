@@ -12,6 +12,14 @@ $scope.gridOptions={
   	enableColumnResizing:false, //调整列大小。 也可以配置单个def。  需要引用ui-grid-resize-column指令
   	rowEditWaitInterval:-1,	//如果设置为-1，则保存永远不会被定时器触发	
   
+    
+    
+  	//单行高亮
+   	enableRowHeaderSelection: false,
+    multiSelect: false,
+    
+    
+    headerTemplate:'./header-template.html' 	//表头模版 
   
   //限制选择函数
   isRowSelectable：function(row){
@@ -70,6 +78,11 @@ $scope.gridOptions={
         displayName:'',
         width:30,
         cellTemplate:'ui-grid/selectionRowHeader',//也可以用自己的template '<div>点击</div>'
+      })
+      
+      //在row.isSelected状态更改后引发
+      $scope.gridApi.selection.on.rowSelectionChanged($scope,function(row){
+        
       })
       
       

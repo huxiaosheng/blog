@@ -1,10 +1,57 @@
 # Redux 随笔
 
+[TOC]
+
+
+
+
+
 ### 什么是Redux？
 
 一种新型的前端“架构模式”，和React-redux并不是同一个东西。Redux是Flux 架构的一种变种。
 
 
+
+### Redux 解决了什么问题？怎么解决的
+
+**矛盾**：“模块之间需要共享数据”，和“数据可能被任意修改导致不可预料的结果”之间的矛盾。
+
+**解决方法：** *提高数据修改的门槛*，组件之间可以共享数据，也可以改数据。但是数据不能直接改，你只能执行某些我允许的某些修改。
+
+#### 1. 模块（组件）之间需要共享数据，这些模块（组件）还可能需要修改这些共享数据
+
+
+
+
+
+所有对数据的操作必须通过 `dispath` 函数。它接受一个参数 `action` ，这个 `action` 是普通的 javascript 对象，里面必须包含一个 type 字段来声明你到底想干什么。
+
+```javascript
+function dispatch(action){
+  switch (action.type){
+    case 'UPDATE_TITLE_TEXT':
+      appState.title.text = action.text
+      break
+    case 'UPDATE_TITLE_COLOR':
+      appState.title.color= action.color
+      break
+    default:
+      break
+  }
+}
+```
+
+
+
+
+
+所以提高了修改数据的门槛：你必须通过 `dispatch` 执行某些允许的修改操作，而且必须大张旗鼓的在 `action`里面声明。
+
+然后我们把它抽象出来一个`createStroe`,它可以产生`store`，里面包含`getState`和`dispath`函数，方便我们使用。
+
+
+
+### 
 
 
 
@@ -188,11 +235,27 @@ store.dispatch(...)
 
 关于React 的应用状态管理中提过，前端中应用的状态存在的问题：就是**状态提升**，一个状态可能被组件树上的所有关联的组件依赖或者影响，并且如果一直有更高级的组件应用，就必要不断的提升状态。而React.js 并没有提供好的解决方案，我们只能把状态提升到依赖或者影响这个状态的所有组件的公共组件上，我们把这种行为叫做状态提升。但是需求不停变化，共享状态没完没了的提升，不符合前端的耦合、可复用、可维护。
 
-### React-redux
+但是react 中有一个方法 context ，我们可以把共享状态放到父组件的context上，这个父组件下所有的组件都可以从context 中直接获取到状态而不需要通过props 层层传递，可以直接从context里面存放、获取数据增强了组件的耦合性；
+
+### React-redux的实现
 
 其实就是结合content和Store，通过content 共享状态，store.dispatch 修改状态。
 
 
+
+### Smart组件 vs Dumb组件
+
+#### Dumb组件
+
+只会接受`props`并且渲染确认结果的组件。Dumb组件最好不要依赖除了React.js 和Dumb 组件以外的内容。不要依赖Redux 不要依赖 React-redux 。这样的组件的可复用性是最好的。
+
+
+
+#### Smart组件
+
+专门做数据相关的应用逻辑，和各种数据打交道、和Ajax打交到，然后把数据通过`props`传递给Dumb,它们带领着Dumb组件完成了复杂的应用程序逻辑
+
+### 
 
 
 
