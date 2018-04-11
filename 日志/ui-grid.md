@@ -98,9 +98,10 @@ $scope.gridOptions={
         
       //获取选中的数据
       $scope.gridApi.selection.getSelectedRows();
+        
 	 //清空复选框
 	  $scope.gridApi.selection.clearSelectedRows();
-      
+        
     }
   
 }
@@ -123,6 +124,5 @@ $scope.gridOptions={
 ### enableFiltering  boolean
 
 是否开启过滤，默认false
-
 
 

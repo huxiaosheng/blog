@@ -20,10 +20,34 @@ cosnole.log(a)  //not defined
 console.log(b) 	//20;
 ```
 
-**特点**
+**特点:**
 
 1. **不存在变量提升**，及变量在声明语句之后才可以使用
+
 2. **暂时性死区**，只要块级作用域内存在let命令，它所声明的变量就“绑定”这个区域，不再受外部影响
+
+   ```javascript
+   let tmp = 123;
+   if(true){
+       tmp = 'abc';
+       console.log(tmp);
+   }
+   // abc
+   let tmp = 123;
+
+   if(true){   
+       tmp = 'abc';
+      	let tmp;
+      	console.log(tmp);
+   }
+    //只要块级作用域内存在let命令，它所声明的变量就“绑定”这个区域，不再受外部影响,也不会去作用域外获取变量
+    //ReferenceError
+
+
+   ```
+
+
+
 3. **不允许重复声明**，let不允许在想通作用域内重复声明同一个变量
 
 
@@ -37,13 +61,18 @@ const声明一个只ou读的常量。一旦声明，常量的值就不能改变
 1. 作用域与let命令相同：只在声明所在的块级作用域内有效
 
 
+### 块级作用域
+
+es5只有全局作用域和函数作用域
+
 
 
 ## 字符串的拓展
 
 ### 模版字符串
 
-```Javascript
+   ```Javascript
+
 name = 'imooc';
 course='React 开发 App'
 
@@ -52,7 +81,7 @@ console.log('hello'+name+',course is '+course);
 
 //新版
 console.log(`hello${name},course is ${course}`);
-```
+   ```
 
 
 
@@ -382,4 +411,4 @@ class Point(){
 
 ### array 语法片断
 
-### ![es6_array](/Users/huyuan/Documents/Blog/images/es6_array.png)
+![es6_array](/Users/huyuan/Documents/Blog/images/es6_array.png)

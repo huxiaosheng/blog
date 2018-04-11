@@ -5,6 +5,13 @@
 
 ## 核心
 
+不是框架，只是一个库。它只提供UI(view)层面的解决方案。
+
+
+
+
+
+-  ​
 -  组件
 -  JSX
 -  Virtual DOM
@@ -17,6 +24,19 @@
 
 
 ## JSX语法
+
+**所谓的JSX其实就是javascript对象** ，让javascript语言能够支持这种直接在Javascript代码里编写类似HTML标签结构的语法。编译的过程会把类似HTML的JSX结构转换成javascript的对象结构。
+
+
+
+总结：
+
+1. jsx 是 javascript 语言的一种语法扩展，长得像HTML，但并不是HTML
+2. React.js 可以用 JSX 来描述你的组件长什么样的。
+3. jsx 在编译的时候会变成相应的 javascript 对象描述
+4. `react-dom` 负责把这个用来描述 UI 信息的 Javascript 对象变成DOM元素，并且渲染到页面上
+
+
 
 本质上来讲，jsx只是为了`React.createElement(component,props,...children)`方法提供的语法糖。比如：
 
@@ -268,7 +288,16 @@ wrapWithLoadData—>wrapWithAjaxData—>CommentInput
 
 
 
-## react的虚拟DOM
+## Immutable.js 是什么？
+
+Immutable.js 是一个完全独立的库，无论基于什么框架都可以用它。
+
+- 意义在于它弥补了javascript 没有不可变数据结构的问题。不可变数据结构是函数式编程中必备的。
+- 在React开发中，频繁操作state对象或是store，配合immutableJs快、安全
+
+
+
+## `react`的虚拟DOM
 
 React在渲染出的UI内部建立和维护了一个内层的实现方式，它包括了从组件返回的React元素。这种实现方式使得React避免了一些不必要的创建和关联DOM节点，因为这样做可能比直接操作JavaScript对象更慢一些。有时它被称之为“虚拟DOM”，但是它其实和React Native的工作方式是一样的
 
@@ -320,18 +349,6 @@ React在渲染出的UI内部建立和维护了一个内层的实现方式，它�
    ​
 
 
-## JSX是什么？
-
-**所谓的JSX其实就是javascript对象** ，让javascript语言能够支持这种直接在Javascript代码里编写类似HTML标签结构的语法。编译的过程会把类似HTML的JSX结构转换成javascript的对象结构。
-
-
-
-总结：
-
-1. jsx 是 javascript 语言的一种语法扩展，长得像HTML，但并不是HTML
-2. React.js 可以用 JSX 来描述你的组件长什么样的。
-3. jsx 在编译的时候会变成相应的 javascript 对象描述
-4. `react-dom` 负责把这个用来描述 UI 信息的 Javascript 对象变成DOM元素，并且渲染到页面上
 
 
 
@@ -528,4 +545,13 @@ PropTypes.element
 6. 事件监听方法，hanle*.
 7. render* 开头的方法，有时候render() 方法里面的内容会分开到不同函数里面进行，这些函数都以 render* 开头
 ```
+
+
+
+
+
+### 目录结构
+
+- 按角色组织
+- 按功能组织
 
