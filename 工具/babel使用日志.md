@@ -8,8 +8,6 @@
 
 Babel 的配置文件是.babelrc，存放在项目的根目录下。使用Babel的第一步就是配置这个文件
 
-
-
 **安装**
 
 ````
@@ -24,8 +22,6 @@ npm i  babel-preset-env -D
     "plugins":[]
 }
 ```
-
-
 
 **如果要使用React,支持jsx语法 **
 
@@ -43,10 +39,6 @@ npm i babel-preset-react -D
 }
 
 ```
-
-
-
-
 
 
 

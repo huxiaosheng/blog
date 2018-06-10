@@ -5,13 +5,8 @@
 
 ## 核心
 
-不是框架，只是一个库。它只提供UI(view)层面的解决方案。
+不是框架，只是一个库。它只提供UI(view)层面的解决方案。​
 
-
-
-
-
--  ​
 -  组件
 -  JSX
 -  Virtual DOM
@@ -23,18 +18,20 @@
 
 
 
-## JSX语法
+## JSX原理
 
-**所谓的JSX其实就是javascript对象** ，让javascript语言能够支持这种直接在Javascript代码里编写类似HTML标签结构的语法。编译的过程会把类似HTML的JSX结构转换成javascript的对象结构。
+**所谓的JSX其实就是javascript对象** ，是javascript语言的一种语法扩展，长的像HTML，但不是HTML。
 
 
 
-总结：
+**从jsx到页面的过程**：
 
-1. jsx 是 javascript 语言的一种语法扩展，长得像HTML，但并不是HTML
-2. React.js 可以用 JSX 来描述你的组件长什么样的。
-3. jsx 在编译的时候会变成相应的 javascript 对象描述
-4. `react-dom` 负责把这个用来描述 UI 信息的 Javascript 对象变成DOM元素，并且渲染到页面上
+![44B5EC06-EAEB-4BA2-B3DC-325703E4BA45](/Users/huyuan/Documents/Blog/images/44B5EC06-EAEB-4BA2-B3DC-325703E4BA45.png)
+
+**总结**：
+
+1. jsx 在编译的时候会变成相应的 javascript 对象描述
+2. `react-dom` 负责把这个用来描述 UI 信息的 Javascript 对象变成DOM元素，并且渲染到页面上
 
 
 
@@ -65,6 +62,10 @@ React.createElement(
 
 
 
+
+
+### 组件的render方法
+
 #### 点表示法
 
 jsx中可以点表示法来引用React组件。你可以方便地从一个模块中导出许多React组件。
@@ -87,7 +88,7 @@ function BlueDatePicker(){
 
 ### 使用javascript表达式
 
-在jsx中可以传递任何`{}`包裹的javascript表达式作为一个属性值。
+在jsx中可以传递任何`{}`包裹的javascript的代码，包括变量、表达式计算、函数执行等等。
 
 
 
@@ -120,7 +121,6 @@ React 里，只需更新组件的 state，然后根据新的 state 重新渲染�
     1. **getInitialState** 方法用于定义初始状态，也就是一个对象，这个对象可以通过
     2. **this.state** 属性读取。当用户点击组件，导致状态变化，
     3. **this.setState** 方法就修改状态值，每次修改以后，自动调用 this.render 方法，再次渲染组件。
-
 
 
 ## props

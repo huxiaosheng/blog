@@ -239,7 +239,7 @@ store.dispatch(...)
 
 ### React-redux的实现
 
-其实就是结合content和Store，通过content 共享状态，store.dispatch 修改状态。
+其实就是结合context和Store，通过context 共享状态，store.dispatch 修改状态。
 
 
 
