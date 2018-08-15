@@ -4,6 +4,8 @@ react中动画的实现方式大致分以下几种：
 
 1. 基于定时器或RAF的间隔动画
 2. 基于css3 的简单动画
+3. react动画API `CssTransitionGroup`
+4. 第三方动画库
 
 ## 一、基于定时器或RAF的间隔动画
 
@@ -36,7 +38,7 @@ C3的基本思路还是定义好transition属性，然后通过react状态修改
 
 [React+CSS3动画](https://jsfiddle.net/studentHu/dx1pa548/)
 
-
+基于 css3 的实现方式具有较高的性能，代码量少，但是只能依赖于 css 效果，对于复杂动画也很难实现。此外，通过修改 `state` 实现动画效果，只能作用于已经存在于 DOM 树中的节点。如果想用这种方式为组件添加入场和离场动画，需要维持至少两个 `state` 来实现入场和离场动画，其中一个 `state` 用于控制元素是否显示，另一个 `state` 用于控制元素在动画中的变化属性。在这种情况下，开发者需要花费大量精力来维护组件的动画逻辑，十分复杂繁琐。
 
 
 
@@ -54,3 +56,5 @@ C3的基本思路还是定义好transition属性，然后通过react状态修改
 
 - https://www.cnblogs.com/onepixel/p/7078617.html
 - https://tech.youzan.com/react-animations/
+- https://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/
+- https://javascript.ruanyifeng.com/htmlapi/requestanimationframe.html
